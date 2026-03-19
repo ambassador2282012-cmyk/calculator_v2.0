@@ -1,0 +1,27 @@
+name: 🏁 Windows EXE Builder
+on: workflow_dispatch
+
+jobs:                           # ← ЭТО ОТСУСТВОВАЛО!
+  build:                        # Имя job
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    
+    - name: Install packages
+      shell: cmd
+      run: pip install customtkinter pillow pyinstaller
+    
+    - name: Build EXE
+      shell: cmd
+      run: pyinstaller --onefile --windowed --name Калькулятор_Цен main.py
+    
+    - name: Upload EXE
+      uses: actions/upload-artifact@v4
+      with:
+        name: Калькулятор_Цен_v1.0
+        path: dist/Калькулятор_Цен.exe
