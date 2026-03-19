@@ -2,7 +2,7 @@ name: 🏁 Windows EXE Builder
 on: workflow_dispatch
 
 jobs:                           # ← ЭТО ОТСУСТВОВАЛО!
-  build:                        # Имя job
+  build:                        # Имя 
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
